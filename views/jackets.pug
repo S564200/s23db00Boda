@@ -5,11 +5,11 @@ block content
   div.container-fluid
     div.row
       - const results = [{jacketName: "Leather Jacket", itemSize : "L", itemPrice: 17.99}, {jacketName: "Rugged Denim Jacket", itemSize : "XL", itemPrice: 9.99}, {jacketName: "Cozy Puffer Coat", itemSize: "XL", itemPrice: 12.49}]
-        each item in results
+        each item,index in results
           div.col-sm-2
              p jacket Name: #{item.jacketName}
              p Size : #{item.itemSize}
              p Price: $#{item.itemPrice.toFixed(2)}
 
-   
+
     
