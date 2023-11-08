@@ -1,9 +1,9 @@
 var express = require('express');
+const jackets_controllers= require('../controllers/jackets');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('jackets', { title: 'Search Results jackets'});
-});
+router.get('/', jackets_controllers.jackets_view_all_Page );
+
 
 module.exports = router;

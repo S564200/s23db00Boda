@@ -10,12 +10,13 @@ process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString);
 
+var jackets = require('./models/jacketsSchema');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jacketsRouter = require('./routes/jackets');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
-var jackets = require("./models/jackets");
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/users', usersRouter);
 app.use('/jackets', jacketsRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
+app.use('/resource', resourceRouter);
 
 // We can seed the collection if needed on
 
