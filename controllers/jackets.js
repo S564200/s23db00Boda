@@ -1,6 +1,6 @@
 var Jacket = require('../models/jacketsSchema');
 
-// List of all Costumes
+// List of all Jackets
 exports.jackets_list = async function(req, res) {
     try{
     thejackets = await Jacket.find();
@@ -13,7 +13,7 @@ exports.jackets_list = async function(req, res) {
     };
     
 
-    // Handle Costume create on POST.
+    // Handle Jackets create on POST.
     exports.jackets_create_post = async function (req, res) {
         console.log(req.body);
         let jacket = new Jacket();
@@ -41,16 +41,16 @@ exports.jackets_list = async function(req, res) {
       
     
 
-// for a specific Costume.
+// for a specific Jackets.
 exports.jackets_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: jackets detail: ' + req.params.id);
 };
 
-// Handle Costume delete form on DELETE.
+// Handle Jackets delete form on DELETE.
 exports.jackets_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: jackets delete DELETE ' + req.params.id);
 };
-// Handle Costume update form on PUT.
+// Handle Jackets update form on PUT.
 exports.jackets_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: jackets update PUT' + req.params.id);
 };

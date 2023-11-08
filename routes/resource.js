@@ -6,16 +6,16 @@ var jackets_controller = require('../controllers/jackets');
 /// API ROUTE ///
 // GET resources base.
 router.get('/', api_controller.api);
-/// COSTUME ROUTES ///
-// POST request for creating a Costume.
+/// Jackets ROUTES ///
+// POST request for creating a Jackets.
 router.post('/jackets', jackets_controller.jackets_create_post);
-// DELETE request to delete Costume.
+// DELETE request to delete Jackets.
 router.delete('/jackets/:id', jackets_controller.jackets_delete);
-// PUT request to update Costume.
+// PUT request to update Jackets.
 router.put('/jackets/:id', jackets_controller.jackets_update_put);
-// GET request for one Costume.
+// GET request for one Jacket.
 router.get('/jackets/:id', jackets_controller.jackets_detail);
-// GET request for list of all Costume items.
+// GET request for list of all Jacket items.
 router.get('/jackets', jackets_controller.jackets_list);
 module.exports = router;
 
