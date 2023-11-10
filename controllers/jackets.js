@@ -42,15 +42,38 @@ exports.jackets_list = async function(req, res) {
     
 
 // for a specific Jackets.
-exports.jackets_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: jackets detail: ' + req.params.id);
+exports.jackets_detail = async function(req, res) {
+  console.log("detail" + req.params.id)
+try {
+     result = await Jacket.findById( req.params.id)
+    res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
 };
+
 
 // Handle Jackets delete form on DELETE.
 exports.jackets_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: jackets delete DELETE ' + req.params.id);
 };
 // Handle Jackets update form on PUT.
-exports.jackets_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: jackets update PUT' + req.params.id);
+exports.jackets_update_put = async function(req, res) {
+  console.log(`update on id ${req.params.id} with body
+  ${JSON.stringify(req.body)}`)
+  try {
+    let toUpdate = await Jacket.findById(req.params.id);
+
+    // Do updates of properties
+    if (req.body.JacketName) toUpdate.JacketName = req.body.JacketName;
+    if (req.body.JacketSize) toUpdate.JacketSize = req.body.JacketSize;
+    if (req.body.JacketPrice) toUpdate.JacketPrice = req.body.JacketPrice;
+
+    let result = await toUpdate.save();
+    console.log("Success " + result)
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+  }
 };
