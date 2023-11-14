@@ -38,8 +38,8 @@ exports.jackets_list = async function(req, res) {
         res.send(`{"error": ${err}}`);
         }
     };
-      
-    
+
+
 
 // for a specific Jackets.
 exports.jackets_detail = async function(req, res) {
@@ -86,3 +86,18 @@ exports.jackets_update_put = async function(req, res) {
     res.status(500).send(`{"error": ${err}: Update for id ${req.params.id} failed`);
   }
 };
+
+// Handle a show one view with id specified by query
+exports.jackets_view_one_Page = async function(req, res) {
+  console.log("single view for id " + req.query.id)
+  try{
+  result = await Jacket.findById( req.query.id)
+  res.render('jacketdetail',
+ { title: 'Jackets Detail', toShow: result });
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+ };
+

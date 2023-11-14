@@ -1,0 +1,22 @@
+extends layout
+block content
+ h1= title
+ - let jacketsid = toShow._id
+ - let JacketName = toShow.JacketName
+ - let JacketPrice = toShow.JacketPrice
+ - let JacketSize = toShow.JacketSize
+ div
+ div.row
+ div(class='jacketsAttr mr-3') Jacket ID  is:
+ div #{jacketsid}
+ div.row
+ div(class='jacketsAttr mr-3') Jacket Name is:
+ div #{JacketName}
+ div.row
+ div(class='jacketsAttr mr-3') Jacket Size is:
+ div #{JacketSize}
+ div.row
+ div(class='jacketsAttr mr-3') Jacket Price is:
+ div #{JacketPrice}
+
+ 
