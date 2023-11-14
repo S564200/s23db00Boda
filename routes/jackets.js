@@ -10,5 +10,8 @@ router.get('/detail', jackets_controllers.jackets_view_one_Page);
 
 router.get('/create', jackets_controllers.jackets_create_Page);
 
+router.get('/update', jackets_controllers.jackets_update_Page);
+
+
 
 module.exports = router;

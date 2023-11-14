@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    h1= title
+
+    if (toShow == null)
+        h2 No instance to display details
+    else
+        - let jacketsid = toShow._id
+        - let JacketName = toShow.JacketName
+        - let JacketPrice = toShow.JacketPrice
+        - let JacketSize = toShow.JacketSize
+        div.row(class='mb-2')
+            div.mr-1 ID is
+            div #{jacketsid}
+        - let actionid = "/resource/jackets/" + jacketsid
+        form(id='JacketForm' action=actionid method="POST") 
+            div.form-group
+                label.jacketsAttr(for='JacketName') Jacket Name
+                input#JacketName(type='text' name='JacketName' value=JacketName)
+            div.form-group
+                label.jacketsAttr(for='JacketPrice') Jacket Price
+                input#JacketPrice(type='text' name='JacketPrice' value=JacketPrice)
+            div.form-group
+                label.jacketsAttr(for='JacketSize') Jacket Size
+                input#JacketSize(type='text' name='JacketSize' value=JacketSize)
+            input(type="submit")
+        script.
+            document.forms['JacketForm'].addEventListener('submit', (event) => {
+                event.preventDefault();                    
+                fetch(event.target.action, {
+                    method: 'PUT', // Use PUT method
+                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                }).then((resp) => {
+                    return resp.text(); 
+                }).then((body) => {
+                    alert("Save succeeded");
+                }).catch((error) => {
+                    alert("Save failed: " + error);
+                });
+            });

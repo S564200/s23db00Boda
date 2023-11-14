@@ -115,3 +115,19 @@ res.send(`{'error': '${err}'}`);
 }
 };
 
+// Handle building the view for updating a costume.
+// query provides the id
+exports.jackets_update_Page = async function(req, res) {
+  console.log("update view for item "+req.query.id)
+  try{
+  result = await Jacket.findById(req.query.id)
+  res.render('jacketupdate', { title: 'Jacket Update', toShow: result });
+  }
+  catch(err){
+  res.status(500)
+  res.send(`{'error': '${err}'}`);
+  }
+  };
+  
+  
+
