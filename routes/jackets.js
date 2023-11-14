@@ -12,6 +12,8 @@ router.get('/create', jackets_controllers.jackets_create_Page);
 
 router.get('/update', jackets_controllers.jackets_update_Page);
 
+router.get('/delete', jackets_controllers.jackets_delete_Page);
+
 
 
 module.exports = router;
