@@ -6,14 +6,15 @@ block content
     div.row
       - const results = [{jacketName: "Leather Jacket", itemSize : "L", itemPrice: 17.99}, {jacketName: "Rugged Denim Jacket", itemSize : "XL", itemPrice: 9.99}, {jacketName: "Cozy Puffer Coat", itemSize: "XL", itemPrice: 12.49}]
         each item,index in results
-          div(class="col-sm-2" onclick =`buy(${index})`)
-             p jacket Name: #{item.jacketName}
-             p Size : #{item.itemSize}
-             p Price: $#{item.itemPrice.toFixed(2)}
+          div(class="col-sm-2" style=`border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin: 10px; cursor: pointer; transition: transform 0.3s; background-color: lightgreen; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);` onclick=`buy(${index})`)
+             p(style="color: blue;") jacket Name: #{item.jacketName}
+             p(style="color: orange;") Size : #{item.itemSize}
+             p(style="color: green;") Price: $#{item.itemPrice.toFixed(2)}
               script.
                  function buy(a)
                  {
                    alert(`You purchased Item ${a+1}`)
                  }
+                 
 
     
