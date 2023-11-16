@@ -10,7 +10,7 @@ block content
              p(style="color: blue;") jacket Name: #{item.jacketName}
              p(style="color: orange;") Size : #{item.itemSize}
              p(style="color: green;") Price: $#{item.itemPrice.toFixed(2)}
-             - let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
+             - let destination = `dispatch(\"/jackets/update?id=${item._id}\")`
              button.btn( class="btn-primary ml-1", onclick= destination) Update
               script.
                  function buy(a)
