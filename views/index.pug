@@ -19,4 +19,13 @@ block content
      document.getElementById("faster").innerText = `MPH ${mph} with change ${change}`;
     }
   a(href="/jackets") search results
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/jackets") Take me to Jackets
+    br
+    a(href="/logout") Logout
 
