@@ -2,21 +2,24 @@ extends layout
 
 block content
   h1= title
+  - let des = `dispatch(\"/jackets/create\")`
+  button.btn( class="btn-secondary m-1" onclick= des) Create
   div.container-fluid
     div.row
-      - const results = [{jacketName: "Leather Jacket", itemSize : "L", itemPrice: 17.99}, {jacketName: "Rugged Denim Jacket", itemSize : "XL", itemPrice: 9.99}, {jacketName: "Cozy Puffer Coat", itemSize: "XL", itemPrice: 12.49}]
+      - let results = [{jacketName: "Leather Jacket", itemSize : "L", itemPrice: 17.99}, {jacketName: "Rugged Denim Jacket", itemSize : "XL", itemPrice: 9.99}, {jacketName: "Cozy Puffer Coat", itemSize: "XL", itemPrice: 12.49}]
         each item,index in results
           div(class="col-sm-2" style=`border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin: 10px; cursor: pointer; transition: transform 0.3s; background-color: lightgreen; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);` onclick=`buy(${index})`)
              p(style="color: blue;") jacket Name: #{item.jacketName}
              p(style="color: orange;") Size : #{item.itemSize}
              p(style="color: green;") Price: $#{item.itemPrice.toFixed(2)}
-             - let destination = `dispatch(\"/jackets/update?id=${item._id}\")`
+             - let destination = `dispatch(\"/jackets/update\")`
+             - let destination1 = `dispatch(\"/jackets/detail\")`
+             - let destination2 = `dispatch(\"/jackets/delete\")`
+             div(class="row-sm-2", class="m-1") Item #{item.jacketName}(#{item.JacketSize}) is #{item.JacketPrice}
              button.btn( class="btn-primary ml-1", onclick= destination) Update
+             button.btn( class="btn-success m-1", onclick= destination1) Details
+             button.btn( class="btn-danger m-1", onclick= destination2) Delete
               script.
-                 function buy(a)
-                 {
-                   alert(`You purchased Item ${a+1}`)
-                 }
                  function dispatch(path){
                    window.location.href=path
                 }
